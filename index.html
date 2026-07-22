@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Interactive visualizer for sorting, graph traversal and binary search trees.">
+    <title>Algorithms Visualizer</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="topbar">
+        <div>
+            <p class="small-title">Interactive project</p>
+            <h1>Algorithms & Data Structures Visualizer</h1>
+            <p class="subtitle">Run sorting, graph traversal and binary search tree operations step by step.</p>
+        </div>
+    </header>
+
+    <main>
+        <nav class="tabs" aria-label="Visualizer sections">
+            <button class="tab active" data-page="sorting">Sorting</button>
+            <button class="tab" data-page="graph">Graphs</button>
+            <button class="tab" data-page="tree">Binary Search Tree</button>
+        </nav>
+
+        <section id="sorting" class="page active">
+            <div class="panel controls">
+                <label for="sortAlgorithm">Algorithm</label>
+                <select id="sortAlgorithm">
+                    <option value="bubble">Bubble Sort</option>
+                    <option value="selection">Selection Sort</option>
+                    <option value="insertion">Insertion Sort</option>
+                </select>
+
+                <label for="arraySize">Array size</label>
+                <input id="arraySize" type="range" min="5" max="35" value="18">
+
+                <label for="speed">Speed</label>
+                <input id="speed" type="range" min="20" max="700" value="180">
+
+                <div class="button-row">
+                    <button id="newArray">New Array</button>
+                    <button id="startSort" class="primary">Start</button>
+                    <button id="resetSort">Reset</button>
+                </div>
+
+                <div class="stats">
+                    <span>Comparisons: <strong id="comparisons">0</strong></span>
+                    <span>Moves: <strong id="moves">0</strong></span>
+                </div>
+            </div>
+
+            <div class="panel visual-panel">
+                <div id="bars" class="bars" aria-label="Sorting visualization"></div>
+                <p id="sortMessage" class="message">Choose an algorithm and press Start.</p>
+            </div>
+        </section>
+
+        <section id="graph" class="page">
+            <div class="panel controls">
+                <label for="graphAlgorithm">Algorithm</label>
+                <select id="graphAlgorithm">
+                    <option value="bfs">Breadth-First Search</option>
+                    <option value="dfs">Depth-First Search</option>
+                    <option value="dijkstra">Dijkstra</option>
+                </select>
+
+                <label for="startNode">Start node</label>
+                <select id="startNode">
+                    <option value="A">A</option>
+                    <option value="B">B</option>
+                    <option value="C">C</option>
+                    <option value="D">D</option>
+                    <option value="E">E</option>
+                    <option value="F">F</option>
+                    <option value="G">G</option>
+                </select>
+
+                <div class="button-row">
+                    <button id="startGraph" class="primary">Run</button>
+                    <button id="resetGraph">Reset</button>
+                </div>
+
+                <div class="stats one-column">
+                    <span>Visit order: <strong id="visitOrder">-</strong></span>
+                    <span id="distanceRow">Distances: <strong id="distances">-</strong></span>
+                </div>
+            </div>
+
+            <div class="panel visual-panel graph-panel">
+                <svg id="graphCanvas" viewBox="0 0 760 430" role="img" aria-label="Graph visualization"></svg>
+                <p id="graphMessage" class="message">Run BFS, DFS or Dijkstra from any node.</p>
+            </div>
+        </section>
+
+        <section id="tree" class="page">
+            <div class="panel controls">
+                <label for="treeValue">Value</label>
+                <input id="treeValue" type="number" min="0" max="99" placeholder="0 - 99">
+
+                <div class="button-row tree-buttons">
+                    <button id="insertNode" class="primary">Insert</button>
+                    <button id="searchNode">Search</button>
+                    <button id="deleteNode">Delete</button>
+                    <button id="resetTree">Reset</button>
+                </div>
+
+                <div class="stats one-column">
+                    <span>In-order: <strong id="inorderOutput">-</strong></span>
+                    <span>Height: <strong id="treeHeight">0</strong></span>
+                </div>
+            </div>
+
+            <div class="panel visual-panel tree-panel">
+                <svg id="treeCanvas" viewBox="0 0 900 470" role="img" aria-label="Binary search tree visualization"></svg>
+                <p id="treeMessage" class="message">Insert values to build the tree.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Built with HTML, CSS and JavaScript.</p>
+    </footer>
+
+    <script type="module" src="src/app.js"></script>
+</body>
+</html>
